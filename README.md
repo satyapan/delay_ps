@@ -25,10 +25,11 @@ dps = dpg.get_delay_ps()
 ```
 
 ## Plot delay ps
+#### Single plot if delay_ps_gen.timeavg=True. Movie if delay_ps_gen.timeavg = False
 ```
 dps.plot(plot_w_line=False, flip_w=False)
 ```
 Arguments:
-  - ax: Axis on which to plot delay ps. If no axis is given, a new figure is created and the delay ps is plotted on it.
+  - ax (only applicable if delay_ps_gen.timeavg = True.): Axis on which to plot delay ps. If no axis is given, a new figure is created and the delay ps is plotted on it.
   - plot_w_line (bool): If True, plots the modified horizon line for NCP/SCP phasing
   - flip_w (bool): If True, flips the delay spectra to have all baselines pointing along North (for NCP phasing)
