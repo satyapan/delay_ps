@@ -18,6 +18,11 @@ mpl.rcParams['axes.grid'] = True
 mpl.rcParams.update({'font.size': 20})
 
 class delay_ps:
+    """
+    Make delay ps object.
+
+    Obtained from delay_ps_gen.get_delay_ps()
+    """
     def __init__(self, delay_ps_arr, ms_bu_sort, w_terms_sort, delay_list, timeavg):
         self.ms_bu_sort = ms_bu_sort
         self.horizon_list = self.ms_bu_sort/3.0e8
@@ -41,6 +46,14 @@ class delay_ps:
         self.flipped = not self.flipped
         
     def plot(self, ax=None, plot_w_line=True, flip_w=False, fig_name='delay_ps', **kargs):
+        """
+        Plot delay ps.
+
+        Arguments:
+        ax: Axis on which to plot delay ps. If no axis is given, a new figure is created and the delay ps is plotted on it.
+        plot_w_line (bool): If True, plots the modified horizon line for NCP/SCP phasing
+        flip_w (bool): If True, flips the delay spectra to have all baselines pointing along North (for NCP phasing)
+        """
         if flip_w != self.flipped:
             self.flip_w()          
         if self.timeavg:
@@ -92,6 +105,16 @@ class delay_ps:
             imageio.mimsave(fig_name+'.gif', images, fps=1)
             
 class delay_ps_gen:
+    """
+    Make delay ps generator.
+
+    Arguments:
+    ms_file: Path to ms
+    data_col: Data column in ms, default = "DATA"
+    timeavg (bool): If True then 1 delay ps produced for entire ms. If False, multiple delay ps are produced separated by n_timeavg steps
+    n_timeavg: Needed only when timeavg = False. Number of time steps to average for a single delay ps.
+    stokes: Stokes parameter to use 
+    """
     def __init__(self, ms_file, data_col='SIM_DATA', timeavg=True, n_timeavg=10, stokes='I'):
         self.ms_file = ms_file
         self.data_col = data_col
