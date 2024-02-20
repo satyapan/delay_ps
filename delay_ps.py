@@ -1,4 +1,4 @@
-# Delay power spectra plotting task.
+# Delay power spectra plotting tasks.
 # Author: S. Munshi
 
 from nenucal import msutils
