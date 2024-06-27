@@ -2,8 +2,6 @@
 
 ## Import module
 ```
-import sys
-sys.path.append('/home/users/satyapan/repos/delay_ps')
 from delay_ps import *
 ```
 
